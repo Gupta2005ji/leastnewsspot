@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>भारत-पाकिस्तान युद्ध 2025: ताज़ा खबरें</title>
+    <meta name="description" content="भारत और पाकिस्तान के बीच युद्ध और सीमा विवाद से जुड़ी ताज़ा हिंदी खबरें। लाइव अपडेट्स पाएं।">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+
+    <h1 style="color: #b30000;">भारत-पाकिस्तान युद्ध 2025: ताज़ा खबरें और लाइव अपडेट्स</h1>
+    <p>भारत और पाकिस्तान के बीच सीमा पर बढ़ते तनाव को लेकर यहां ताज़ा और विश्वसनीय खबरें हिंदी में अपडेट की जा रही हैं।</p>
+
+    <h2>लाइव अपडेट्स:</h2>
+    <div id="news-feed" style="background-color: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <p>खबरें लोड हो रही हैं...</p>
+    </div>
+
+    <script>
+    const apiKey = "6e85bcc6923645459392cf97df2098de";
+    const url = `https://newsapi.org/v2/everything?q=India%20Pakistan%20war&language=hi&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const feed = document.getElementById('news-feed');
+        feed.innerHTML = '';
+        data.articles.forEach(article => {
+          const item = document.createElement('div');
+          item.innerHTML = `
+            <h3>${article.title}</h3>
+            <p>${article.description || ''}</p>
+            <a href="${article.url}" target="_blank">पूरी खबर पढ़ें</a>
+            <hr>
+          `;
+          feed.appendChild(item);
+        });
+      })
+      .catch(error => {
+        document.getElementById('news-feed').innerHTML = "<p>खबरें लोड करने में दिक्कत आ रही है। कृपया कुछ देर बाद फिर प्रयास करें।</p>";
+      });
+    </script>
+
+</body>
+</html>
